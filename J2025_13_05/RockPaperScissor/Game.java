@@ -5,24 +5,20 @@ import java.util.Scanner;
 
 public class Game {
 
-    private Player player;
-    private GuessValidator guessValidator;
-    private Scanner scanner;
+    private Player player = new Player();
+    private GuessValidator guessValidator = new GuessValidator();
+    private Scanner scanner = new Scanner(System.in);
     private String AIhand; // Número aleatório;
     private String[] options;
 
     public Game() {
         this.options = new String[]{"Rock", "Paper", "Scissor"};
-
-        this.player = new Player();
-        this.guessValidator = new GuessValidator();
-        this.scanner = new Scanner(System.in);
     }
 
     public void start() {
 
         System.out.println("Welcome to Rock-Paper-Scissor Game, " + player.getName() + "!");
-        int[] wins = new int[]{0,0};    // Usuario, AI
+        int[] wins = new int[]{0,0};    // [Usuario, AI]
 
         while (wins[0] < 3 && wins[1] < 2) {
             System.out.println(Arrays.toString(wins));
@@ -33,7 +29,6 @@ public class Game {
             System.out.println("4 - Exit");
 
             int guess = scanner.nextInt();
-
             if (guess > 0 && guess < 4) {
                 int randomNum = (int) (Math.random() * 3); // Gera um número entre 1 e 100
                 this.AIhand = options[randomNum];
